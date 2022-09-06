@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import generateJWT from "../helpers/generateJWT.js";
 import User from "../models/User.js";
+import sendEmail from "../helpers/email.js";
 
 
 const register = async (req, res) => {
@@ -18,6 +19,8 @@ const register = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
         await user.save();
+
+        await sendEmail(user.email);
 
         res.json({
             id: user.id,
