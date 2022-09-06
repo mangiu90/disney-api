@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from "dotenv";
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
+import characterRoutes from './routes/characterRoutes.js';
 import { Category } from './models/index.js';
 
 const app = express();
@@ -28,6 +29,7 @@ dotenv.config();
     ]);
 
     app.use('/auth', authRoutes);
+    app.use('/characters', characterRoutes);
 
     const port = process.env.PORT || 4000;
     app.listen(port, () => {
