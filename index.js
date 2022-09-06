@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import characterRoutes from './routes/characterRoutes.js';
+import movieRoutes from "./routes/movieRoutes.js";
 import { Category } from './models/index.js';
 
 const app = express();
@@ -30,6 +31,7 @@ dotenv.config();
 
     app.use('/auth', authRoutes);
     app.use('/characters', characterRoutes);
+    app.use('/movies', movieRoutes);
 
     const port = process.env.PORT || 4000;
     app.listen(port, () => {
