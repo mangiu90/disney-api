@@ -2,6 +2,8 @@
 
 installation:
 npm install
+touch databse.sqlite
+cp .env.example .env
 
 run server:
 npm start
