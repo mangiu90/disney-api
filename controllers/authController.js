@@ -22,7 +22,7 @@ const register = async (req, res) => {
 
         await sendEmail(user.email);
 
-        res.json({
+        return res.status(200).json({
             id: user.id,
             username: user.username,
             email: user.email,
@@ -55,7 +55,7 @@ const login = async (req, res) => {
     }
 
     if (await bcrypt.compare(password, user.password)) {
-        res.json({
+        return res.status(200).json({
             id: user.id,
             username: user.username,
             email: user.email,
