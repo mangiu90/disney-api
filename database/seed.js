@@ -12,6 +12,8 @@ const userSeeder = async () => {
         email: "user1@user.com",
         password
     });
+
+    console.log('user seeded successfully.');
 }
 
 const characterSeeder = async () => {
@@ -160,6 +162,8 @@ const charactersMoviesSeeder = async () => {
     (await Movie.findByPk(3)).addCharacter(yoda);
     (await Movie.findByPk(4)).addCharacter(garfio);
     (await Movie.findByPk(5)).addCharacter(stich);
+
+    console.log('data seeded successfully.');
 }
 
 
