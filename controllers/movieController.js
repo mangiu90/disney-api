@@ -34,7 +34,11 @@ const getMovieById = async (req, res) => {
         include: [Category, Character]
     });
 
-    res.status(200).json(movie);
+    if (movie !== null) {
+        res.status(200).json(movie);
+    } else {
+        res.status(404).json({ message: "Movie not found" });
+    }
 }
 
 const createMovie = async (req, res) => {

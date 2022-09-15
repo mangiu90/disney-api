@@ -6,12 +6,12 @@ const getCharacters = async (req, res) => {
     const { name, age, weight, movies } = req.query;
 
     var whereStatement = {};
-    if(name) whereStatement.name = name;
-    if(age) whereStatement.age = age;
-    if(weight) whereStatement.weight = weight;
+    if (name) whereStatement.name = name;
+    if (age) whereStatement.age = age;
+    if (weight) whereStatement.weight = weight;
 
     var includeStatement = [];
-    if(movies) {
+    if (movies) {
         includeStatement = [{
             model: Movie,
             attributes: ['id'],
@@ -37,7 +37,11 @@ const getCharacterById = async (req, res) => {
         include: Movie
     });
 
-    res.status(200).json(character);
+    if (character !== null) {
+        res.status(200).json(character);
+    } else {
+        res.status(404).json({ message: "Character not found" });
+    }
 }
 
 const createCharacter = async (req, res) => {
